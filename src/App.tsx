@@ -1,9 +1,12 @@
 
 import './App.css'
+import TodoList from "./components/todo/todoList.tsx";
 
 
 
 function App() {
+
+
 
     //const todo:Todo = {title: "React로 생성하는 Todo", writer:"zerock"}
 
@@ -34,7 +37,7 @@ function App() {
 
   return (
     <>
-
+      <TodoList/>
     </>
   )
 }
