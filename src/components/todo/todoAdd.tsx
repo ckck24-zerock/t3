@@ -11,6 +11,8 @@ const initState:Todo = {
 function TodoAdd() {
 
     const [todoAdd, setTodoAdd] = useState(initState)
+    const [fetching, setFetching] = useState(false)
+    const [result, setResult] = useState(0)
 
     const hanleChange = (e: ChangeEvent<HTMLInputElement>) => {
 
@@ -20,13 +22,28 @@ function TodoAdd() {
     }
 
     const handleClick = () => {
-        postTodo(todoAdd).then(result => {
-            console.log(result)
-        })
+
+        setFetching(true)
+
+        setTimeout(()=> {
+            
+            postTodo(todoAdd).then(tnoResult => {
+                setFetching(false)
+                setResult(tnoResult)
+            })
+
+        },3000)
+
+
     }
 
     return (
         <div>
+
+            {result !== 0  && <h1> RESULT: {result}</h1> }
+
+            {fetching && <h1>Fetching...............</h1>}
+
             <h1> Todo Add </h1>
 
             <div>
