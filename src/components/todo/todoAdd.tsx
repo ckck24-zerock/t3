@@ -20,7 +20,9 @@ function TodoAdd() {
     }
 
     const handleClick = () => {
-        postTodo(todoAdd)
+        postTodo(todoAdd).then(result => {
+            console.log(result)
+        })
     }
 
     return (
