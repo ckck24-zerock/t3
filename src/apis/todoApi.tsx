@@ -1,10 +1,13 @@
 import axios from "axios";
 
 
+const HOST:string = import.meta.env.VITE_API_SERVER
+
+
 export async function getTodo(tno: number ): Promise<Todo> {
 
     try {
-        const res = await axios.get(`http://122.34.51.94:8090/api/v1/todos/${tno}`)
+        const res = await axios.get(`${HOST}/${tno}`)
         return res.data
     }catch(err) {
         console.log(err)
@@ -18,7 +21,7 @@ export async function getTodoList ( page:number = 1 , size: number = 10  ): Prom
     const param = {page:page, size:size}
 
     const res =
-        await axios.get(`http://122.34.51.94:8090/api/v1/todos/list`, {params: param})
+        await axios.get(`${HOST}/list`, {params: param})
 
     return res.data
 }
@@ -26,7 +29,7 @@ export async function getTodoList ( page:number = 1 , size: number = 10  ): Prom
 export async function updateTodo ( tno: number, title: string ):Promise<Todo> {
 
     const res = await axios.put(
-        `http://122.34.51.94:8090/api/v1/todos/${tno}`,
+        `${HOST}/${tno}`,
         {title:title, tno:tno} )
 
     return res.data
@@ -35,14 +38,14 @@ export async function updateTodo ( tno: number, title: string ):Promise<Todo> {
 
 export async function deleteTodo (tno:number):Promise<void> {
 
-    await axios.delete(`http://122.34.51.94:8090/api/v1/todos/${tno}`)
+    await axios.delete(`${HOST}/${tno}`)
 
 }
 
 export async function postTodo (todo:Todo): Promise<number> {
 
     const res =
-        await axios.post(`http://122.34.51.94:8090/api/v1/todos`, todo)
+        await axios.post(`${HOST}`, todo)
 
     return res.data
 }
