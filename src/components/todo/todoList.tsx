@@ -22,9 +22,16 @@ function TodoList() {
 
     useEffect(() => {
 
-        getTodoList().then(result => setData(result))
+        getTodoList(page).then(result => {
 
-    }, [ ])
+            const oldDtos = data.dtoList
+            const newDtos = result.dtoList
+
+            setData({...result, dtoList:[...oldDtos,...newDtos]})
+
+        })
+
+    }, [ page ])
 
 
 
@@ -39,7 +46,8 @@ function TodoList() {
 
             <ul>
 
-                {data.dtoList.map( todo => <li key={todo.tno}> {todo.tno} </li> )}
+                {data.dtoList.map( todo =>
+                    <li key={todo.tno}> {todo.tno}  -- {todo.title} -- {todo.writer} </li> )}
 
             </ul>
 
