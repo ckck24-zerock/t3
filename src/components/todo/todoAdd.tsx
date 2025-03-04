@@ -20,12 +20,14 @@ function TodoAdd() {
                 TITLE
                 <input type='text'  value={todoAdd.title} onChange={e => {
                     todoAdd.title = e.target.value
+                    setTodoAdd({...todoAdd})
                 }}></input>
             </div>
             <div>
                 WRITER
                 <input type='text' value={todoAdd.writer} onChange={e => {
                     todoAdd.writer = e.target.value
+                    setTodoAdd({...todoAdd})
                 }}></input>
             </div>
             <div>
