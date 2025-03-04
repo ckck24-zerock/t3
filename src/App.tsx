@@ -2,10 +2,17 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import {getTodoList} from "./apis/todoApi.tsx";
 
 
 function App() {
   const [count, setCount] = useState(0)
+
+    getTodoList(2,50).then((result: PageResponse<Todo>) => {
+
+        console.log(result.total)
+
+    })
 
     // getTodo(25144).then( (result: Todo) => {
     //
