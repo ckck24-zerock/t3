@@ -23,7 +23,7 @@ export async function getTodoList ( page:number = 1 , size: number = 10  ): Prom
     return res.data
 }
 
-export async function updateTodo ( tno: number, title: string ) {
+export async function updateTodo ( tno: number, title: string ):Promise<Todo> {
 
     const res = await axios.put(
         `http://122.34.51.94:8090/api/v1/todos/${tno}`,
@@ -31,4 +31,18 @@ export async function updateTodo ( tno: number, title: string ) {
 
     return res.data
 
+}
+
+export async function deleteTodo (tno:number):Promise<void> {
+
+    await axios.delete(`http://122.34.51.94:8090/api/v1/todos/${tno}`)
+
+}
+
+export async function postTodo (todo:Todo): Promise<Todo> {
+
+    const res =
+        await axios.post(`http://122.34.51.94:8090/api/v1/todos/`, todo)
+
+    return res.data
 }
