@@ -1,6 +1,7 @@
 
 import './App.css'
-import TodoList from "./components/todo/todoList.tsx";
+
+import TodoAdd from "./components/todo/todoAdd.tsx";
 
 
 
@@ -37,7 +38,7 @@ function App() {
 
   return (
     <>
-      <TodoList/>
+      <TodoAdd/>
     </>
   )
 }

@@ -24,15 +24,14 @@ function TodoList() {
 
         getTodoList(page).then(result => {
 
-            const oldDtos = data.dtoList
-            const newDtos = result.dtoList
-
-            setData({...result, dtoList:[...oldDtos,...newDtos]})
+            setData(result)
 
         })
 
-    }, [ page ])
+    }, [ page ]) //의존성 조건 
 
+    //빈 배열  - 한 번만 호출할 때 사용
+    // 배열의 내용물이 기존과 달라지는 경우에 함수가 자동으로 호출
 
 
 
