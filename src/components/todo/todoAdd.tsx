@@ -1,5 +1,5 @@
 import {postTodo} from "../../apis/todoApi.tsx";
-import {useState} from "react";
+import {ChangeEvent, useState} from "react";
 
 
 const initState:Todo = {
@@ -11,6 +11,15 @@ function TodoAdd() {
 
     const [todoAdd, setTodoAdd] = useState(initState)
 
+    const hanleChange = (e: ChangeEvent<HTMLInputElement>) => {
+
+        const {name, value} = e.target
+
+        const newState = {...todoAdd, [name]: value}
+
+        setTodoAdd(newState)
+
+    }
 
     return (
         <div>
@@ -18,17 +27,11 @@ function TodoAdd() {
 
             <div>
                 TITLE
-                <input type='text'  value={todoAdd.title} onChange={e => {
-                    todoAdd.title = e.target.value
-                    setTodoAdd({...todoAdd})
-                }}></input>
+                <input type='text'  value={todoAdd.title} onChange={hanleChange}></input>
             </div>
             <div>
                 WRITER
-                <input type='text' value={todoAdd.writer} onChange={e => {
-                    todoAdd.writer = e.target.value
-                    setTodoAdd({...todoAdd})
-                }}></input>
+                <input type='text' value={todoAdd.writer} onChange={hanleChange}></input>
             </div>
             <div>
                 <button >SEND</button>
