@@ -2,20 +2,20 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import {getTodo} from "./apis/todoApi.tsx";
+
 
 function App() {
   const [count, setCount] = useState(0)
 
-    getTodo(25144).then( (result: Todo) => {
-
-        console.log(result)
-
-    } ).catch( reason =>  {
-
-        console.log(reason)
-
-    } )
+    // getTodo(25144).then( (result: Todo) => {
+    //
+    //     console.log(result)
+    //
+    // } ).catch( reason =>  {
+    //
+    //     console.log(reason)
+    //
+    // } )
 
   return (
     <>

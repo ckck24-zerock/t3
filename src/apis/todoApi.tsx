@@ -12,3 +12,13 @@ export async function getTodo(tno: number ): Promise<Todo> {
     }
 
 }
+
+export async function getTodoList ( page:number = 1 , size: number = 10  ) {
+
+    const param = {page:page, size:size}
+
+    const res =
+        await axios.get(`http://122.34.51.94:8090/api/v1/todos/list`, {params: param})
+
+    return res.data
+}
