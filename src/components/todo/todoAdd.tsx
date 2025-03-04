@@ -18,11 +18,15 @@ function TodoAdd() {
 
             <div>
                 TITLE
-                <input type='text'  value={todoAdd.title}></input>
+                <input type='text'  value={todoAdd.title} onChange={e => {
+                    todoAdd.title = e.target.value
+                }}></input>
             </div>
             <div>
                 WRITER
-                <input type='text' value={todoAdd.writer}></input>
+                <input type='text' value={todoAdd.writer} onChange={e => {
+                    todoAdd.writer = e.target.value
+                }}></input>
             </div>
             <div>
                 <button >SEND</button>
