@@ -1,5 +1,5 @@
 import {getTodoList} from "../../apis/todoApi.tsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 
 const initState:PageResponse<Todo> = {
@@ -18,13 +18,24 @@ function TodoList() {
 
     const [data, setData] = useState<PageResponse<Todo>>(initState)
 
-    //비동기 호출
-    getTodoList()
+    const [page, setPage] = useState<number>(1)
+
+    useEffect(() => {
+
+        getTodoList().then(result => setData(result))
+
+    }, [ ])
+
+
 
 
     return (
         <div>
-            <h1>Todo List</h1>
+            <h1 onClick={() => {
+
+                setPage(page + 1)
+
+            }}>Todo List  {page}</h1>
 
             <ul>
 
