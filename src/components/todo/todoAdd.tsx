@@ -1,5 +1,5 @@
 
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useCallback, useState} from "react";
 import {postTodo} from "../../apis/todoApi.tsx";
 
 
@@ -18,12 +18,12 @@ function TodoAdd({changeKey}: TodoAddProps) {
     const [fetching, setFetching] = useState(false)
     const [result, setResult] = useState(0)
 
-    const hanleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
 
         const {name, value} = e.target
 
-        setTodoAdd(  {...todoAdd, [name]: value} )
-    }
+        setTodoAdd(prevState => ({ ...prevState, [name]: value }));
+    },[])
 
     const handleClick = () => {
 
@@ -53,11 +53,11 @@ function TodoAdd({changeKey}: TodoAddProps) {
 
             <div>
                 TITLE
-                <input type='text' name='title'  value={todoAdd.title} onChange={hanleChange}></input>
+                <input type='text' name='title'  value={todoAdd.title} onChange={handleChange}></input>
             </div>
             <div>
                 WRITER
-                <input type='text' name='writer' value={todoAdd.writer} onChange={hanleChange}></input>
+                <input type='text' name='writer' value={todoAdd.writer} onChange={handleChange}></input>
             </div>
             <div>
                 <button onClick={handleClick} >SEND</button>
